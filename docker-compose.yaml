@@ -1,0 +1,13 @@
+version: '3'
+services:
+  haproxy:
+    # image haproxy:lts-alpine
+    image: haproxy:2.6.1-alpine3.16
+    # restart: always
+    ports:
+      - "16443:16443"
+      - "443:8443"
+      - "80:8080"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./certs:/etc/ssl/certs
